@@ -1,9 +1,10 @@
 public class PushNotification implements NotificationService{
     private String deviceId;
 
-    // Constructor (Bonus)
+
     public PushNotification(String deviceId) {
         this.deviceId = deviceId;
+
     }
 
     @Override

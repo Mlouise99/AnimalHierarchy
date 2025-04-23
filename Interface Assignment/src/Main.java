@@ -16,5 +16,8 @@ public class Main {
         push.sendNotification("New message received!");
 
         push.setDefaultPriority("High");
+
+
+
     }
 }
