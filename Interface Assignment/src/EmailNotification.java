@@ -1,5 +1,5 @@
 public class EmailNotification implements NotificationService {
-    private String emailAddress;
+     String emailAddress;
 
     public EmailNotification(String emailAddress) {
 
