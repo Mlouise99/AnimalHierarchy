@@ -29,9 +29,6 @@ public class CSVStreamProcessor {
         }
     }
 
-    public static void main(String[] args) throws IOException {
-        double averageAge = calculateAverageAge("D:\\Notes\\ACTIVITIES\\Back-End Training\\AdvancedOOP\\AnimalHierarchy\\CsvStream Assignment\\src\\People.csv");
-        System.out.println("Average Age = " + String.format("%.2f", averageAge));
-    }
+
 
 }
