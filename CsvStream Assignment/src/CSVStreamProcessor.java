@@ -4,6 +4,7 @@ import java.nio.file.Paths;
 import java.util.stream.Stream;
 
 public class CSVStreamProcessor {
+
     public static double calculateAverageAge(String csvFilePath) throws IOException{
         try
         (Stream<String> lines = Files.lines(Paths.get(csvFilePath))) {
