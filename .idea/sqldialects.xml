@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/Health Management System/01_HospitalManagement_Creation.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/Health Management System/03_Update_And_Delete.sql" dialect="PostgreSQL" />
+  </component>
+</project>

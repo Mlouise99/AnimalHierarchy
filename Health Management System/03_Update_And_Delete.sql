@@ -2,7 +2,7 @@ SELECT p.first_name, p.last_name
 FROM patients p
 JOIN appointments a ON p.id = a.patient_id
 JOIN doctors d ON d.id = a.doctor_id
-WHERE d.first_name ='John' AND d.last_name = 'Smith';
+WHERE d.id=1;
 --this will output Alice JohnSon and Charlie Brown 
 --because they are the one who had appointment with doctor John Smith.
 
@@ -16,12 +16,9 @@ SELECT
     d.id AS doctor_id,
     d.first_name,
     d.last_name,
-    COUNT(a.id) AS total_appointments
-FROM 
-    doctors d
-LEFT JOIN 
-    appointments a ON d.id = a.doctor_id
-GROUP BY 
+    COUNT(a.id) AS total_appointments FROM
+    doctors d LEFT JOIN
+    appointments a ON d.id = a.doctor_id GROUP BY
     d.id, d.first_name, d.last_name;
 	
 --Doctors and number of patients they are attending to
@@ -87,5 +84,22 @@ ORDER BY
     month;
 
 
+-- Update foreign key in appointments table
+ALTER TABLE appointments
+    DROP CONSTRAINT IF EXISTS appointments_patient_id_fkey,
+    ADD CONSTRAINT appointments_patient_id_fkey
+        FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE;
+
+-- Update foreign key in medical_records
+ALTER TABLE medical_records
+    DROP CONSTRAINT IF EXISTS medical_records_patient_id_fkey,
+    ADD CONSTRAINT medical_records_patient_id_fkey
+        FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE;
+
+-- Update foreign key in doctor_patient
+ALTER TABLE doctor_patient
+    DROP CONSTRAINT IF EXISTS doctor_patient_patient_id_fkey,
+    ADD CONSTRAINT doctor_patient_patient_id_fkey
+        FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE;
 
 

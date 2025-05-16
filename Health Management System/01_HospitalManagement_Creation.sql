@@ -25,8 +25,8 @@ CREATE TABLE patients(
 --CREATION OF APPOINTMENTS TABLE
 CREATE TABLE appointments(
 id SERIAL PRIMARY KEY,
-doctor_id INT REFERENCES doctors(id),
-patient_id INT REFERENCES patients(id),
+doctor_id INT REFERENCES doctors(id) ON DELETE CASCADE,
+patient_id INT REFERENCES patients(id) ON DELETE CASCADE,
 appointment_date TIMESTAMP, 
 status VARCHAR(100),
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
@@ -35,10 +35,10 @@ created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 --CREATION OF MEDICAL_RECORDS TABLE
 CREATE TABLE medical_records(
 id SERIAL PRIMARY KEY,
-patient_id INT REFERENCES patients(id),
+patient_id INT REFERENCES patients(id) ON DELETE CASCADE,
 diagnosis VARCHAR(500),
 treatment VARCHAR(500),
-doctor_id INT REFERENCES doctors(id),
+doctor_id INT REFERENCES doctors(id) ON DELETE CASCADE,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -50,6 +50,6 @@ CREATE TABLE doctor_patient(
 doctor_id INT,
 patient_id INT,
 PRIMARY KEY (doctor_id, patient_id),
-FOREIGN KEY (doctor_id) REFERENCES doctors(id),
-FOREIGN KEY (patient_id) REFERENCES patients(id)
+FOREIGN KEY (doctor_id) REFERENCES doctors(id) ON DELETE CASCADE,
+FOREIGN KEY (patient_id) REFERENCES patients(id) ON DELETE CASCADE
 );
